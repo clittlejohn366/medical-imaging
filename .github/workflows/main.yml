@@ -9,7 +9,7 @@ on:
         default: 'fedlearn' 
         type: string
   
-      NICName:
+      NIC_Name:
         description: 'Name of precreated NIC'
         required: true
         default: 'fedlearn-nic'
@@ -34,7 +34,7 @@ jobs:
         
         az vm create -n fedserver --image microsoft-dsvm:ubuntu-2004:2004-gen2:latest --authentication-type password \
         --admin-password ${{ secrets.VM_PASSWORD }} \
-        --nics ${{ github.event.inputs.nic }}
+        --nics ${{ github.event.inputs.NIC_Name }}
                 
         az ml workspace create -n Asia-Hospital --location eastus2
         az ml compute create --type ComputeInstance --name FedClientAsia$RANDOMQUALIFIER --workspace-name Asia-Hospital
