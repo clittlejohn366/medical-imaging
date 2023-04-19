@@ -12,7 +12,7 @@ on:
       NIC_Name:
         description: 'Name of precreated NIC'
         required: true
-        default: 'fedlearn-nic-primary'
+        default: 'fedserver-nic-primary'
         type: string
 
 jobs:
