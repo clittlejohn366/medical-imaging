@@ -33,6 +33,7 @@ jobs:
         RANDOMQUALIFIER="$RANDOM"
         
         az vm create -n fedserver --image microsoft-dsvm:ubuntu-2004:2004-gen2:latest --authentication-type password \
+        --admin-username fedserveradmin \
         --admin-password ${{ secrets.VM_PASSWORD }} \
         --nics ${{ github.event.inputs.NIC_Name }}
                 
