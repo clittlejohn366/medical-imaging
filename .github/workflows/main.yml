@@ -31,7 +31,7 @@ jobs:
         --vnet-name nih-cit-cs-cloudlab-azure-test-01-vnet-spoke-az \
         --subnet nih-cit-cs-cloudlab-azure-test-01-nihnet-subnet \
         --nsg nih-cit-cs-cloudlab-azure-test-01-subnet-subnet-nsg \
-        
+        --public-ip-address ""        
         
         az ml workspace create -n Asia-Hospital --location eastus2
         az ml compute create --type ComputeInstance --name FedClientAsia$RANDOMQUALIFIER --workspace-name Asia-Hospital
