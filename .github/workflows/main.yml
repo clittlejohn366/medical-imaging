@@ -8,6 +8,12 @@ on:
         required: true
         default: 'fedlearn' 
         type: string
+  
+      NICName:
+        description: 'Name of precreated NIC'
+        required: true
+        default: 'fedlearn-nic'
+        type: string
 
 jobs:
   build:
@@ -28,11 +34,8 @@ jobs:
         
         az vm create -n fedserver --image microsoft-dsvm:ubuntu-2004:2004-gen2:latest --authentication-type password \
         --admin-password ${{ secrets.VM_PASSWORD }} \
-        --vnet-name nih-cit-cs-cloudlab-azure-test-01-vnet-spoke-az \
-        --subnet nih-cit-cs-cloudlab-azure-test-01-nihnet-subnet \
-        --nsg nih-cit-cs-cloudlab-azure-test-01-subnet-subnet-nsg \
-        --public-ip-address ""        
-        
+        --nics ${{ github.event.inputs.nic }}
+                
         az ml workspace create -n Asia-Hospital --location eastus2
         az ml compute create --type ComputeInstance --name FedClientAsia$RANDOMQUALIFIER --workspace-name Asia-Hospital
         az ml workspace create -n Europe-Hospital --location eastus2
